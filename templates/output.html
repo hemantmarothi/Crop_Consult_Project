@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Image Upload with Centered Preview</title>
+    <!-- Include Bootstrap CSS via CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body style="overflow-x: hidden;">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand mx-auto" href="#"><b>
+                    <h2>Crop Consult</h2>
+                </b></a>
+        </div>
+    </nav>
+
+    <div class="mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card">
+                    <div style="border-radius: 15px 15px 0 0;" class="card-header back-color text-white">
+                        <h2 class="text-center">Identified Disease</h2>
+                    </div>
+                    <div class="card-body">
+                        <!-- Center-aligned image preview container -->
+                        <div class="image-preview mt-4">
+                            <figure>
+                                <img src="{{ url_for('uploaded_file', filename=img_file) }}" alt="nothing">
+                                <figcaption class="res" style="text-align: center;">{{name}}</figcaption>
+                                {% if name == 'rust' %}
+                                    <p style="text-align: center;">Rust disease manifests as yellow-orange pustules on the undersides of lemon leaves, potentially defoliating the tree. Effective rust management includes regular pruning and sanitation to remove and dispose of infected plant parts. Apply suitable fungicides as per label instructions, aiming to control rust outbreaks. Opt for base watering to keep foliage dry and prevent spore spread. Maintain soil fertility to bolster tree health and use mulch to reduce soil splashing. Enhance air circulation through pruning to minimize humidity within the canopy. Rust can be controlled through early detection, prompt treatment, and overall tree health maintenance.</p>
+                                {% elif name == 'scab' %}
+                                    <p style="text-align: center;">Scab disease in lemon plants is characterized by raised, corky lesions on leaves and fruit. To manage scab, practice regular pruning and sanitation, removing and disposing of infected plant material. Apply copper-based or recommended fungicides at the appropriate times during the growing season. Implement proper watering techniques, directing water to the base of the trees to keep the foliage dry. Maintain soil nutrition and mulch to reduce soil splashing. Prune trees to enhance air circulation within the canopy. Timely action and adhering to fungicide application schedules are vital to minimize scab's impact and keep lemon trees healthy.</p>
+                                {% else %}
+                                    <p style="text-align: center;">No Solutions</p>
+                                {% endif %}
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
